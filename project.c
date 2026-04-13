@@ -1,3 +1,6 @@
+/* CDA 3103 project
+This program is written by: Richard Magiday */
+
 #include "spimcore.h"
 
 /* ALU */
