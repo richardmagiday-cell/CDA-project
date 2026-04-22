@@ -204,18 +204,16 @@ int rw_memory(unsigned ALUresult, unsigned data2, char MemWrite, char MemRead, u
 {
     if (MemWrite == 1)
     {
-        if ((ALUresult % 4) == 0)
-            Mem[ALUresult >> 2] = data2;
-        else
+        if (ALUresult >= 65536 || (ALUresult % 4) != 0)
             return 1;
+        Mem[ALUresult >> 2] = data2;
     }
 
     if (MemRead == 1)
     {
-        if ((ALUresult % 4) == 0)
-            *memdata = Mem[ALUresult >> 2];
-        else
+        if (ALUresult >= 65536 || (ALUresult % 4) != 0)
             return 1;
+        *memdata = Mem[ALUresult >> 2];
     }
 
     return 0;
